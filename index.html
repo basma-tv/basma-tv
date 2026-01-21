@@ -27,7 +27,7 @@
 .btn-store{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.06);font-weight:700}
 .btn-store i{font-size:18px}
 
-.mockup{flex:0 0 360px;height:640px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));box-shadow:0 20px 50px rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+.mockup{flex:0 0 360px;height:360px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(
 .mockup img{width:100%;height:100%;object-fit:cover}
 
 /* Sections */
@@ -50,7 +50,7 @@ footer{max-width:1100px;margin:40px auto 80px;padding:18px;color:rgba(255,255,25
 /* Responsive */
 @media(max-width:880px){
   .hero{flex-direction:column-reverse;padding-top:100px}
-  .mockup{width:300px;height:520px}
+  .mockup{flex:0 0 360px;height:360px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(
   header{padding:0 12px}
 }
 
@@ -59,12 +59,12 @@ footer{max-width:1100px;margin:40px auto 80px;padding:18px;color:rgba(255,255,25
 <body>
   <header>
     <div class="header-left">
-      <i class="fa fa-bars hamb" onclick="toggleSidenav()"></i>
+      <i id="hambtn" class="fa fa-bars hamb" onclick="toggleSidenav()" aria-label="فتح القائمة" role="button"></i>
       <img class="logo" id="logoHeader" src="https://c.top4top.io/p_3672t9o642.jpg" alt="بصمة TV">
       <span class="badge">بصمة TV — التطبيق الرسمي</span>
     </div>
     <div>
-      <a class="btn-store" href="#download"><i class="fa fa-download"></i> حمل الآن</a>
+      <a class="btn-store" href="https://www.appcreator24.com/app3894576-qk30yv" target="_blank"> <i class="fa fa-download"></i> تحميل التطبيق</a>
     </div>
   </header>  <!-- Side menu -->  <aside id="side" class="sidenav" aria-hidden="true">
     <span onclick="toggleSidenav()" style="position:absolute;top:18px;left:18px;font-size:28px;cursor:pointer;color:#fff">×</span>
@@ -88,7 +88,7 @@ footer{max-width:1100px;margin:40px auto 80px;padding:18px;color:rgba(255,255,25
         </div>
         <div style="margin-top:18px;color:rgba(255,255,255,0.6)">هل تريد شاشات أو لافتات للتحميل؟ أرسلها لنا وسنضعها هنا.</div>
       </div><div class="mockup" aria-hidden="true">
-    <img id="heroImage" src="https://k.top4top.io/p_3673x1wom6.jpg" alt="بصمة TV Logo" style="object-fit:contain;padding:40px;background:#1a1c2c">
+    <img id="heroLogo" src="https://k.top4top.io/p_3673x1wom6.jpg" alt="بصمة TV Logo" style="object-fit:contain;padding:40px;background:#1a1c2c;width:100%;height:100%;">
   </div>
 </section>
 
@@ -117,11 +117,24 @@ footer{max-width:1100px;margin:40px auto 80px;padding:18px;color:rgba(255,255,25
     // Sidenav toggle
     function toggleSidenav(){
       const s=document.getElementById('side');
-      s.classList.toggle('open');
-      s.setAttribute('aria-hidden', !s.classList.contains('open'));
+      const hb=document.getElementById('hambtn');
+      const opened = s.classList.toggle('open');
+      s.setAttribute('aria-hidden', !opened);
+      if(hb){
+        if(opened){ hb.classList.remove('fa-bars'); hb.classList.add('fa-times'); hb.setAttribute('aria-label','إغلاق القائمة'); }
+        else { hb.classList.remove('fa-times'); hb.classList.add('fa-bars'); hb.setAttribute('aria-label','فتح القائمة'); }
+      }
     }
 
-    // Theme toggle & logos (يحاكي الكود المرسل)
+    // Close nav helper (used by close button inside sidenav)
+    function closeSidenav(){
+      const s=document.getElementById('side');
+      const hb=document.getElementById('hambtn');
+      s.classList.remove('open');
+      s.setAttribute('aria-hidden', true);
+      if(hb){ hb.classList.remove('fa-times'); hb.classList.add('fa-bars'); hb.setAttribute('aria-label','فتح القائمة'); }
+    }
+// Theme toggle & logos (يحاكي الكود المرسل)
     const darkLogos={header:'https://c.top4top.io/p_3672t9o642.jpg',side:'https://g.top4top.io/p_36727vp9e4.jpg'};
     const lightLogos={header:'https://l.top4top.io/p_3672klyxk7.png',side:'https://e.top4top.io/p_3672o9h6w0.jpg'};
     function applyTheme(theme){
@@ -144,8 +157,13 @@ footer{max-width:1100px;margin:40px auto 80px;padding:18px;color:rgba(255,255,25
 
     // Allow updating the hero mockup from outside (useful when you upload image)
     window.updateHeroImage = function(url){
-      const img=document.getElementById('heroImage');
-      img.src = url;
+      const img=document.getElementById('heroLogo');
+      if(img) img.src = url;
     };
+    // ensure hero logo is the provided one by default
+    (function(){
+      const img=document.getElementById('heroLogo');
+      if(img) img.src='https://k.top4top.io/p_3673x1wom6.jpg';
+    })();
   </script></body>
 </html>
