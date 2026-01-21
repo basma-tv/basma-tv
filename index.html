@@ -1,0 +1,162 @@
+<!doctype html>
+
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <title>بصمة TV — حمل التطبيق</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#1a1c2c">
+  <style>
+    /* صفحة هبوط بأسلوب مطابق للتصميم المرسل — داكن، زجاجي، RTL */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;padding:0;font-family:'Cairo',sans-serif;background:linear-gradient(135deg,#1a1c2c 0%,#4a192c 100%);color:#fff}
+    a{color:inherit;text-decoration:none}header{position:fixed;top:0;left:0;right:0;height:70px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;z-index:50;background:rgba(20,20,30,0.75);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.header-left{display:flex;align-items:center;gap:16px}
+.hamb{font-size:22px;cursor:pointer}
+.logo{height:44px}
+.badge{font-size:13px;padding:6px 10px;border-radius:18px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.04)}
+
+/* Hero */
+.hero{padding-top:110px;display:flex;gap:30px;align-items:center;justify-content:center;max-width:1100px;margin:0 auto;padding-bottom:40px}
+.hero-card{flex:1;min-width:280px}
+.hero-title{font-size:32px;margin:0 0 10px;font-weight:700}
+.hero-sub{color:rgba(255,255,255,0.8);margin:0 0 18px}
+.download-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn-store{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.06);font-weight:700}
+.btn-store i{font-size:18px}
+
+.mockup{flex:0 0 360px;height:640px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));box-shadow:0 20px 50px rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+.mockup img{width:100%;height:100%;object-fit:cover}
+
+/* Sections */
+.sections{max-width:1100px;margin:30px auto;padding:20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:rgba(255,255,255,0.04);padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,0.05);box-shadow:0 8px 20px rgba(0,0,0,0.45)}
+.card h4{margin:0 0 8px}
+.card p{margin:0;color:rgba(255,255,255,0.78)}
+
+footer{max-width:1100px;margin:40px auto 80px;padding:18px;color:rgba(255,255,255,0.7);display:flex;justify-content:space-between;align-items:center}
+
+/* Side menu */
+.sidenav{position:fixed;top:0;right:-320px;width:320px;height:100%;background:rgba(18,18,25,0.96);backdrop-filter:blur(18px);z-index:120;border-left:1px solid rgba(255,255,255,0.04);transition:0.35s}
+.sidenav.open{right:0}
+.sidenav .header{padding:28px;text-align:center}
+.sidenav img{width:95px;height:95px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.06)}
+.sidenav a{display:block;padding:14px 22px;color:rgba(255,255,255,0.88);border-radius:12px;margin:8px 12px;font-weight:600}
+.sidenav a:hover{background:rgba(255,255,255,0.03)}
+
+/* Responsive */
+@media(max-width:880px){
+  .hero{flex-direction:column-reverse;padding-top:100px}
+  .mockup{width:300px;height:520px}
+  header{padding:0 12px}
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <i class="fa fa-bars hamb" onclick="toggleSidenav()"></i>
+      <img class="logo" id="logoHeader" src="https://c.top4top.io/p_3672t9o642.jpg" alt="Logo">
+      <span class="badge">بصمة TV — التطبيق الرسمي</span>
+    </div>
+    <div>
+      <a class="btn-store" href="#download"><i class="fa fa-download"></i> حمل الآن</a>
+    </div>
+  </header>  <!-- Side menu -->  <aside id="side" class="sidenav" aria-hidden="true">
+    <div class="header">
+      <img id="sideLogo" src="https://g.top4top.io/p_36727vp9e4.jpg" alt="logo">
+      <h3 style="color:#fff;margin-top:8px">بصمة TV</h3>
+    </div>
+    <nav>
+      <a href="#features">مميزات</a>
+      <a href="#screens">صور التطبيق</a>
+      <a href="#download">تحميل</a>
+      <a href="mailto:basma.tv.0.11@gmail.com">اتصل بنا</a>
+      <a href="#" onclick="toggleTheme();return false">تبديل الوضع</a>
+    </nav>
+  </aside>  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <h1 class="hero-title">بصمة TV — تطبيق الأفلام والمسلسلات</h1>
+        <p class="hero-sub">واجهة سينمائية سلسة، قوائم عربية، وقنوات مباشرة — كل ما تحتاجه لمتابعة أفضل المحتوى.</p>
+        <div class="download-row" id="download">
+          <a class="btn-store" href="https://www.appcreator24.com/app3894576-qk30yv" target="_blank"> <i class="fa fa-android"></i> تحميل التطبيق</a>
+          <a class="btn-store" href="https://www.appcreator24.com/app3894576-qk30yv" target="_blank"> <i class="fa fa-apple"></i> App Store</a>
+          <a class="btn-store" href="https://www.appcreator24.com/app3894576-qk30yv" target="_blank"> <i class="fa fa-globe"></i> صفحة التطبيق</a>
+        </div>
+        <div style="margin-top:18px;color:rgba(255,255,255,0.6)">هل تريد شاشات أو لافتات للتحميل؟ أرسلها لنا وسنضعها هنا.</div>
+      </div><div class="mockup" aria-hidden="true">
+    <img id="heroImage" src="https://l.top4top.io/p_3048zz4i11.png" alt="App mockup">
+  </div>
+</section>
+
+<section id="features" class="sections">
+  <h2 style="margin:0 0 14px">مميزات تطبيق بصمة TV</h2>
+  <div class="cards">
+    <div class="card"><h4>واجهة سينمائية</h4><p>تصميم عصري داكن بأسلوب زجاجي مشابه لأكبر تطبيقات المشاهدة.</p></div>
+    <div class="card"><h4>مشاهدة مجانية</h4><p>محتوى متنوع من أفلام، مسلسلات، ومسرحيات بدون تعقيد.</p></div>
+    <div class="card"><h4>قنوات مباشرة</h4><p>إمكانية متابعة القنوات التلفزيونية والبث المباشر بسهولة.</p></div>
+    <div class="card"><h4>سريع وخفيف</h4><p>أداء عالي وسلاسة على أغلب أجهزة أندرويد.</p
+    <div class="card"><h4>قنوات مباشرة</h4><p>إضافة روابط بث مباشر وقوائم M3U بسهولة.</p></div>
+    <div class="card"><h4>سرعة وسلاسة</h4><p>تصميم محسّن للهواتف مع تأثيرات زجاجية وخفت تحميل.</p></div>
+    <div class="card"><h4>دعم التحميل</h4><p>روابط APK مباشرة وروابط المتاجر الرسمية.</p></div>
+  </div>
+</section>
+
+<section id="screens" class="sections">
+  <h2 style="margin:0 0 14px">صور التطبيق</h2>
+  <div class="cards">
+    <div class="card"><h4>واجهة سينمائية</h4><p>تصميم عصري داكن بأسلوب زجاجي مشابه لأكبر تطبيقات المشاهدة.</p></div>
+    <div class="card"><h4>مشاهدة مجانية</h4><p>محتوى متنوع من أفلام، مسلسلات، ومسرحيات بدون تعقيد.</p></div>
+    <div class="card"><h4>قنوات مباشرة</h4><p>إمكانية متابعة القنوات التلفزيونية والبث المباشر بسهولة.</p></div>
+    <div class="card"><h4>سريع وخفيف</h4><p>أداء عالي وسلاسة على أغلب أجهزة أندرويد.</p
+    <div class="card"><img src="https://c.top4top.io/p_36728zol86.png" style="width:100%;border-radius:8px;display:block"></div>
+    <div class="card"><img src="https://c.top4top.io/p_3672t9o642.jpg" style="width:100%;border-radius:8px;display:block"></div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 بصمة TV — جميع الحقوق محفوظة</div>
+  <div>البريد: <a href="mailto:basma.tv.0.11@gmail.com">basma.tv.0.11@gmail.com</a></div>
+</footer>
+
+  </main>  <script>
+    // Sidenav toggle
+    function toggleSidenav(){
+      const s=document.getElementById('side');
+      s.classList.toggle('open');
+      s.setAttribute('aria-hidden', !s.classList.contains('open'));
+    }
+
+    // Theme toggle & logos (يحاكي الكود المرسل)
+    const darkLogos={header:'https://c.top4top.io/p_3672t9o642.jpg',side:'https://g.top4top.io/p_36727vp9e4.jpg'};
+    const lightLogos={header:'https://l.top4top.io/p_3672klyxk7.png',side:'https://e.top4top.io/p_3672o9h6w0.jpg'};
+    function applyTheme(theme){
+      if(theme==='light'){
+        document.documentElement.style.background='linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%)';
+        document.body.style.color='#111';
+        document.getElementById('logoHeader').src=lightLogos.header;
+        document.getElementById('sideLogo').src=lightLogos.side;
+      } else {
+        document.documentElement.style.background='linear-gradient(135deg,#1a1c2c 0%,#4a192c 100%)';
+        document.body.style.color='#fff';
+        document.getElementById('logoHeader').src=darkLogos.header;
+        document.getElementById('sideLogo').src=darkLogos.side;
+      }
+    }
+    (function(){
+      const saved=localStorage.getItem('appTheme')||'dark';
+      applyTheme(saved);
+    })();
+
+    // Allow updating the hero mockup from outside (useful when you upload image)
+    window.updateHeroImage = function(url){
+      const img=document.getElementById('heroImage');
+      img.src = url;
+    };
+  </script></body>
+</html>
